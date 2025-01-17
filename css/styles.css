@@ -1,0 +1,52 @@
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: space-around;
+    padding: 0 7.5vw;
+}
+
+.item {
+    width: 160px;
+    height: 185px;
+    margin: 10px;
+    background-color: white;
+    border: 3.5px solid black;
+}
+
+.album {
+    width: 160px;
+    height: 160px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.zodiac {
+    z-index: -1;
+    width: 800px;
+    position: fixed;
+    bottom: -600px; 
+}
+
+.description {
+    display: block;
+    background-color: white;
+    padding: 0 20px;
+    border: 3px solid black;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+h3 {
+    margin-top: 0px;
+    font-size: 14px;
+    margin-left: 10px;
+}
