@@ -3,31 +3,69 @@
     <head>
         <meta charset="UTF-8"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/styles.css">
         <title>Zodiac Wrapped</title>
     </head>
-    <body>
+    <body style="background-image: linear-gradient(white, #3B1A62); bottom: 0px; background-attachment: fixed;">
         <h1>Zodiac Wrapped</h1>
         <div class="container">
-            <div class="item"><img src="images/pole.jpg" class="album"/><h3>CAPRICORN</h3></div>
-            <div class="item"><img src="images/84.jpg" class="album"/><h3>AQUARIUS</h3></div>
-            <div class="item"><img src="images/astola.jpg" class="album"/><h3>PISCES</h3></div>
-            <div class="item"><img src="images/canto.jpg" class="album"/><h3>ARIES</h3></div>
-            <div class="item"><img src="images/hipoteca.jpg" class="album"/><h3>TAURUS</h3></div>
-            <div class="item"><img src="images/estopa.jpg" class="album"/><h3>GEMINI</h3></div>
-            <div class="item"><img src="images/lalalove.jpg" class="album"/><h3>CANCER</h3></div>
-            <div class="item"><img src="images/melendi.jpg" class="album"/><h3>LEO</h3></div>
-            <div class="item"><img src="images/moda.jpg" class="album"/><h3>VIRGO</h3></div>
-            <div class="item"><img src="images/sfdk.jpg" class="album"/><h3>LIBRA</h3></div>
-            <div class="item"><img src="images/tangana.jpg" class="album"/><h3>SCORPIO</h3></div>
-            <div class="item"><img src="images/yami.jpg" class="album"/><h3>SAGITTARIUS</h3></div>
+            <div class="item" onclick="play('Tus Besos', 'Pole.', '75')">
+                <img src="images/pole.jpg" class="album"/><h3>CAPRICORN</h3>
+                <audio id="Pole."> <source src="songs/Tus_Besos-Pole..mp3"></audio>
+            </div>
+            <div class="item" onclick="play('Esquinas de Madrid', '84', '45')">
+                <img src="images/84.jpg" class="album"/><h3>AQUARIUS</h3>
+                <audio id="84"> <source src="songs/Esquinas_de_Madrid-84.mp3"></audio>
+            </div>
+            <div class="item" onclick="play('No Parezco un Artista', 'Astola', '15')">
+                <img src="images/astola.jpg" class="album"/><h3>PISCES</h3>
+                <audio id="Astola"> <source src="songs/No_Parezco_un_Artista-Astola.mp3"></audio>
+            </div>
+            <div class="item" onclick="play('Volver a Disfrutar', 'El Canto del Loco', '-15')">
+                <img src="images/canto.jpg" class="album"/><h3>ARIES</h3>
+                <audio id="El Canto del Loco"> <source src="songs/Volver_a_Disfrutar-El_Canto_Del_Loco.mp3"></audio>
+            </div>
+            <div class="item" onclick="play('Que te vaya bien', 'El Niño de la Hipoteca', '-45')">
+                <img src="images/hipoteca.jpg" class="album"/><h3>TAURUS</h3>
+                <audio id="El Niño de la Hipoteca"> <source src="songs/Que_te_vaya_bien-El_Niño_de_la_Hipoteca.mp3"></audio>
+            </div>
+            <div class="item" onclick="play('Fin de Semana', 'Estopa', '-75')">
+                <img src="images/estopa.jpg" class="album"/><h3>GEMINI</h3>
+                <audio id="Estopa"> <source src="songs/Fin_de_Semana-Estopa.mp3"></audio>
+            </div>
+            <div class="item" onclick="play('Himno(para los que están jodidos)', 'La La Love You', '-105')">
+                <img src="images/lalalove.jpg" class="album"/><h3>CANCER</h3>
+                <audio id="La La Love You"> <source src="songs/Himno(para_los_que_están_jodidos)-La_La_Love_You.mp3"></audio>
+            </div>
+            <div class="item" onclick="play('Desde mi ventana', 'Melendi', '-135')">
+                <img src="images/melendi.jpg" class="album"/><h3>LEO</h3>
+                <audio id="Melendi"> <source src="songs/Desde_mi_ventana-Melendi.mp3"></audio>
+            </div>
+            <div class="item" onclick="play('La Vieja Banda', 'La Maravillosa Orquesta del Alcohol', '-165')">
+                <img src="images/moda.jpg" class="album"/><h3>VIRGO</h3>
+                <audio id="La Maravillosa Orquesta del Alcohol"> <source src="songs/La_Vieja_Banda-La_Maravillosa_Orquesta_del_Alcohol.mp3"></audio>
+            </div>
+            <div class="item" onclick="play('La Amalgama', 'SFDK', '-195')">
+                <img src="images/sfdk.jpg" class="album"/><h3>LIBRA</h3>
+                <audio id="SFDK"> <source src="songs/La_Amalgama-SFDK.mp3"></audio>
+            </div>
+            <div class="item" onclick="play('Nominao', 'C.Tangana', '-225')">
+                <img src="images/tangana.jpg" class="album"/><h3>SCORPIO</h3>
+                <audio id="C.Tangana"> <source src="songs/Nominao-C.Tangana.mp3"></audio>
+            </div>
+            <div class="item" onclick="play('Tengo', 'Yami Safdie', '-255')">
+                <img src="images/yami.jpg" class="album"/><h3>SAGITTARIUS</h3>
+                <audio id="Yami Safdie"> <source src="songs/Tengo-Yami_Safdie.mp3"></audio>
+            </div>
         </div>
         <div class="center">
             <div class="description">
-                <h2> Month Title </h2>
-                <p> Placeholder for the description.</p>
+                <h2 id="title"> Title - Artist </h2>
+                <p id="description"> Placeholder for the description.</p>
             </div>
-            <img src="images/zodiac.png" class="zodiac"/>
+            <img src="images/zodiac.png" id="zodiac"/>
         </div>
     </body>
+    <script src="js/script.js"></script>
 </html>
