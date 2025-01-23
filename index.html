@@ -7,58 +7,47 @@
         <link rel="stylesheet" href="css/styles.css">
         <title>Zodiac Wrapped</title>
     </head>
-    <body style="background-image: linear-gradient(white, #3B1A62); bottom: 0px; background-attachment: fixed;">
+    <body>
         <h1>Zodiac Wrapped</h1>
         <div class="container">
-            <div class="item" onclick="play('Tus Besos', 'Pole.', '75')">
+            <div class="item" onclick="play('capricorn')">
                 <img src="images/pole.jpg" class="album"/><h3>CAPRICORN</h3>
-                <audio id="Pole."> <source src="songs/Tus_Besos-Pole..mp3"></audio>
             </div>
-            <div class="item" onclick="play('Esquinas de Madrid', '84', '45')">
+            <div class="item" onclick="play('aquarius')">
                 <img src="images/84.jpg" class="album"/><h3>AQUARIUS</h3>
-                <audio id="84"> <source src="songs/Esquinas_de_Madrid-84.mp3"></audio>
             </div>
-            <div class="item" onclick="play('No Parezco un Artista', 'Astola', '15')">
+            <div class="item" onclick="play('pisces')">
                 <img src="images/astola.jpg" class="album"/><h3>PISCES</h3>
-                <audio id="Astola"> <source src="songs/No_Parezco_un_Artista-Astola.mp3"></audio>
             </div>
-            <div class="item" onclick="play('Volver a Disfrutar', 'El Canto del Loco', '-15')">
+            <div class="item" onclick="play('aries')">
                 <img src="images/canto.jpg" class="album"/><h3>ARIES</h3>
-                <audio id="El Canto del Loco"> <source src="songs/Volver_a_Disfrutar-El_Canto_Del_Loco.mp3"></audio>
             </div>
-            <div class="item" onclick="play('Que te vaya bien', 'El Niño de la Hipoteca', '-45')">
+            <div class="item" onclick="play('taurus')">
                 <img src="images/hipoteca.jpg" class="album"/><h3>TAURUS</h3>
-                <audio id="El Niño de la Hipoteca"> <source src="songs/Que_te_vaya_bien-El_Niño_de_la_Hipoteca.mp3"></audio>
             </div>
-            <div class="item" onclick="play('Fin de Semana', 'Estopa', '-75')">
+            <div class="item" onclick="play('gemini')">
                 <img src="images/estopa.jpg" class="album"/><h3>GEMINI</h3>
-                <audio id="Estopa"> <source src="songs/Fin_de_Semana-Estopa.mp3"></audio>
             </div>
-            <div class="item" onclick="play('Himno(para los que están jodidos)', 'La La Love You', '-105')">
+            <div class="item" onclick="play('cancer')">
                 <img src="images/lalalove.jpg" class="album"/><h3>CANCER</h3>
-                <audio id="La La Love You"> <source src="songs/Himno(para_los_que_están_jodidos)-La_La_Love_You.mp3"></audio>
             </div>
-            <div class="item" onclick="play('Desde mi ventana', 'Melendi', '-135')">
+            <div class="item" onclick="play('leo')">
                 <img src="images/melendi.jpg" class="album"/><h3>LEO</h3>
-                <audio id="Melendi"> <source src="songs/Desde_mi_ventana-Melendi.mp3"></audio>
             </div>
-            <div class="item" onclick="play('La Vieja Banda', 'La Maravillosa Orquesta del Alcohol', '-165')">
+            <div class="item" onclick="play('virgo')">
                 <img src="images/moda.jpg" class="album"/><h3>VIRGO</h3>
-                <audio id="La Maravillosa Orquesta del Alcohol"> <source src="songs/La_Vieja_Banda-La_Maravillosa_Orquesta_del_Alcohol.mp3"></audio>
             </div>
-            <div class="item" onclick="play('La Amalgama', 'SFDK', '-195')">
+            <div class="item" onclick="play('libra')">
                 <img src="images/sfdk.jpg" class="album"/><h3>LIBRA</h3>
-                <audio id="SFDK"> <source src="songs/La_Amalgama-SFDK.mp3"></audio>
             </div>
-            <div class="item" onclick="play('Nominao', 'C.Tangana', '-225')">
+            <div class="item" onclick="play('scorpio')">
                 <img src="images/tangana.jpg" class="album"/><h3>SCORPIO</h3>
-                <audio id="C.Tangana"> <source src="songs/Nominao-C.Tangana.mp3"></audio>
             </div>
-            <div class="item" onclick="play('Tengo', 'Yami Safdie', '-255')">
+            <div class="item" onclick="play('sagittarius')">
                 <img src="images/yami.jpg" class="album"/><h3>SAGITTARIUS</h3>
-                <audio id="Yami Safdie"> <source src="songs/Tengo-Yami_Safdie.mp3"></audio>
             </div>
         </div>
+        <audio id="my_audio"> <source src="" id="my_source"></audio>
         <div class="center">
             <div class="description">
                 <h2 id="title"> Title - Artist </h2>
