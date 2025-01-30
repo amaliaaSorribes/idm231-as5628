@@ -19,7 +19,7 @@ h3 {
     margin-left: 10px;
 }
 
-.container {
+#container {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;

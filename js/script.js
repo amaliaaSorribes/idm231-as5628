@@ -154,3 +154,27 @@ function play(zodiac) {
         flag = -1;
     } 
 }
+
+function makeButtons() {
+    const container = document.getElementById('container');
+
+    for (let album of albums) {
+        const div = document.createElement('div');
+        div.className = "item";
+
+        const image = document.createElement('img');
+        image.src = album.imgSrc;
+        image.className = "album";
+        const header3 = document.createElement('h3');
+        header3.textContent = album.zodiac.toUpperCase();
+        
+        div.appendChild(image);
+        div.appendChild(header3);
+
+        div.addEventListener('click',  () => play(album.zodiac));
+        
+        container.appendChild(div);
+    }
+}
+
+makeButtons();
