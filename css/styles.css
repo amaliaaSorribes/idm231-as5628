@@ -32,9 +32,25 @@ h3 {
 .item {
     width: 160px;
     height: 185px;
-    margin: 10px;
+    margin: 15px;
     background-color: white;
     box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.8);
+}
+
+.cd {
+    width: 165px;
+    height: 165px;
+    position: relative;
+    z-index: -1;
+    margin-top: -200px;
+    margin-left: 75px;
+}
+
+h3 {
+    position: relative;
+    z-index: 2;
+    margin-top: -35px;
+    margin-left: 25px;
 }
 
 .album {
@@ -69,7 +85,7 @@ form {
 }
 
 #zodiac {
-    z-index: -1;
+    z-index: -10;
     width: 800px;
     position: fixed;
     bottom: -590px; 
@@ -80,7 +96,7 @@ form {
     background-color: white;
     padding: 5px 20px;
     border-radius: 20px;
-    margin-top: 25px;
+    margin: 25px 20px;
     margin-bottom: 205px;
 
     h2{

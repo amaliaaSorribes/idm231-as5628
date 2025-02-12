@@ -27,7 +27,9 @@ const albums = [
         song: "Tus Besos",
         degrees: "75",
         audioSrc: "songs/Tus_Besos-Pole..mp3",
-        imgSrc: "images/pole.jpg"
+        imgSrc: "images/pole.jpg",
+        albumName: "Esta Vida Es Un Jaleo",
+        releaseDate: "2022"
     },
     {
         zodiac : "aquarius",
@@ -35,7 +37,9 @@ const albums = [
         song: "Esquinas de Madrid",
         degrees: "45",
         audioSrc: "songs/Esquinas_de_Madrid-84.mp3",
-        imgSrc: "images/84.jpg"
+        imgSrc: "images/84.jpg",
+        albumName: "El Burdel de las Sirenas",
+        releaseDate: "2010"
     },
     {
         zodiac : "pisces",
@@ -43,7 +47,9 @@ const albums = [
         song: "No Parezco un Artista",
         degrees: "15",
         audioSrc: "songs/No_Parezco_un_Artista-Astola.mp3",
-        imgSrc: "images/astola.jpg"
+        imgSrc: "images/astola.jpg",
+        albumName: "Canciones Perdidas",
+        releaseDate: "2015"
     },
     {
         zodiac : "aries",
@@ -51,7 +57,9 @@ const albums = [
         song: "Volver a Disfrutar",
         degrees: "-15",
         audioSrc: "songs/Volver_a_Disfrutar-El_Canto_Del_Loco.mp3",
-        imgSrc: "images/canto.jpg"
+        imgSrc: "images/canto.jpg",
+        albumName: "Estados de Animo",
+        releaseDate: "2003"
     },
     {
         zodiac : "taurus",
@@ -59,7 +67,9 @@ const albums = [
         song: "Que te vaya bien",
         degrees: "-45",
         audioSrc: "songs/Que_te_vaya_bien-El_Niño_de_la_Hipoteca.mp3",
-        imgSrc: "images/hipoteca.jpg"
+        imgSrc: "images/hipoteca.jpg",
+        albumName: "Que te vaya bien",
+        releaseDate: "2009"
     },
     {
         zodiac : "gemini",
@@ -67,7 +77,9 @@ const albums = [
         song: "Fin de Semana",
         degrees: "-75",
         audioSrc: "songs/Fin_de_Semana-Estopa.mp3",
-        imgSrc: "images/estopa.jpg"
+        imgSrc: "images/estopa.jpg",
+        albumName: "¿La Calle Es Tuya?",
+        releaseDate: "2004"
     },
     {
         zodiac : "cancer",
@@ -75,7 +87,9 @@ const albums = [
         song: "Himno(para los que están jodidos)",
         degrees: "-105",
         audioSrc: "songs/Himno(para_los_que_están_jodidos)-La_La_Love_You.mp3",
-        imgSrc: "images/lalalove.jpg"
+        imgSrc: "images/lalalove.jpg",
+        albumName: "Blockbuster",
+        releaseDate: "2023"
     },
     {
         zodiac : "leo",
@@ -83,7 +97,9 @@ const albums = [
         song: "Desde mi ventana",
         degrees: "-135",
         audioSrc: "songs/Desde_mi_ventana-Melendi.mp3",
-        imgSrc: "images/melendi.jpg"
+        imgSrc: "images/melendi.jpg",
+        albumName: "Sin noticias de Holanda",
+        releaseDate: "2006"
     },
     {
         zodiac : "virgo",
@@ -91,7 +107,9 @@ const albums = [
         song: "La Vieja Banda",
         degrees: "-165",
         audioSrc: "songs/La_Vieja_Banda-La_Maravillosa_Orquesta_del_Alcohol.mp3",
-        imgSrc: "images/moda.jpg"
+        imgSrc: "images/moda.jpg",
+        albumName: "Salvavida (de las Balas Perdidas)",
+        releaseDate: "2017"
     },
     {
         zodiac : "libra",
@@ -99,7 +117,9 @@ const albums = [
         song: "La Amalgama",
         degrees: "-195",
         audioSrc: "songs/La_Amalgama-SFDK.mp3",
-        imgSrc: "images/sfdk.jpg"
+        imgSrc: "images/sfdk.jpg",
+        albumName: "Redención",
+        releaseDate: "2018"
     },
     {
         zodiac : "scorpio",
@@ -107,7 +127,9 @@ const albums = [
         song: "Nominao",
         degrees: "-225",
         audioSrc: "songs/Nominao-C.Tangana.mp3",
-        imgSrc: "images/tangana.jpg"
+        imgSrc: "images/tangana.jpg",
+        albumName: "El Madrileño",
+        releaseDate: "2021"
     },
     {
         zodiac : "sagittarius",
@@ -115,17 +137,40 @@ const albums = [
         song: "Tengo",
         degrees: "-255",
         audioSrc: "songs/Tengo-Yami_Safdie.mp3",
-        imgSrc: "images/yami.jpg"
+        imgSrc: "images/yami.jpg",
+        albumName: "SUR",
+        releaseDate: "2023"
     }
 ];
 
 function getInfo(zodiac) {
     for (let album of albums) {
         if (album.zodiac == zodiac) {
-            let info = [album.artist, album.song, album.degrees, album.audioSrc];
+            let info = [album.artist, album.song, album.degrees, album.audioSrc, album.albumName, album.releaseDate];
             return info;
         }
     }
+}
+
+function createCD(artist, container){
+    const myDivSpecific = document.getElementById('myDiv'+artist);
+    myDivSpecific.style.marginRight = "65px";
+
+    const cd = document.createElement('img');
+    cd.src = "images/cd.png";
+    cd.className = "cd";
+    cd.id = "cd"+artist;
+
+    const itemSpecific = document.getElementById('item'+artist);
+    itemSpecific.appendChild(cd);
+
+    container.style.maxWidth = "1300px";
+}
+
+function deleteCD(cdPrev, prevArtist){
+    cdPrev.remove();
+    const myDivSpecific = document.getElementById('myDiv'+prevArtist);
+    myDivSpecific.style.marginRight = "0px";
 }
 
 let prevArtist = "";
@@ -136,21 +181,46 @@ function play(zodiac) {
     const song = getInfo(zodiac)[1];
     const degrees = getInfo(zodiac)[2];
     const audioSrc = getInfo(zodiac)[3];
+    const albumName = getInfo(zodiac)[4];
+    const releaseDate = getInfo(zodiac)[5];
 
     const audio = document.getElementById('my_audio');
     const title = document.getElementById('title');
-    const source = document.getElementById('my_source');
+    let source = document.getElementById('my_source');
     let zodiacCircle = document.getElementById('zodiac');
+    const cdPrev = document.getElementById('cd'+prevArtist);
+    let container = document.getElementById('container');
+    const description  = document.getElementById('description');
+    source.src = audioSrc;
+
+    if (prevArtist!=artist && prevArtist!=null) {
+        audio.load();
+    }
+
     if (prevArtist!=artist || flag==-1) {
-        source.src = audioSrc;
-        audio.load(); 
+        if (prevArtist!=artist || (prevArtist==artist && flag==-1)) {
+            createCD(artist, container);
+        } 
+
+        if (flag==0 && cdPrev!=null) {
+            deleteCD(cdPrev, prevArtist);
+        }
+
         audio.play();
         title.textContent = song+" - "+artist; 
+        description.innerHTML = "<u>Album Name:</u> "+albumName+"<br><br><u>Release date</u>: "+releaseDate;
         zodiacCircle.style.transform = "rotate("+degrees+"deg)";
         prevArtist = artist;
         flag = 0;
     } else {
         audio.pause();
+        title.textContent = "Title - Artist";	
+        description.textContent = "Album Name, Release date";
+        zodiacCircle.style.transform = "rotate(0deg)";
+        if (cdPrev!=null){
+            deleteCD(cdPrev, prevArtist);
+            container.style.maxWidth = "1200px";
+        }
         flag = -1;
     } 
 }
@@ -160,15 +230,22 @@ function makeButtons() {
 
     for (let album of albums) {
         const div = document.createElement('div');
-        div.className = "item";
+        div.className = "myDiv";
+        div.id = "myDiv"+album.artist;
+
+        const item = document.createElement('div');
+        item.className = "item";
+        item.id = "item"+album.artist;
 
         const image = document.createElement('img');
         image.src = album.imgSrc;
         image.className = "album";
+
         const header3 = document.createElement('h3');
         header3.textContent = album.zodiac.toUpperCase();
         
-        div.appendChild(image);
+        item.appendChild(image);
+        div.appendChild(item);
         div.appendChild(header3);
 
         div.addEventListener('click',  () => play(album.zodiac));
