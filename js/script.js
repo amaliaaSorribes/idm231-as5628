@@ -1,25 +1,5 @@
 //// @ts-check
 
-/*
-function play(song, artist, degrees) {
-    const audio = document.getElementById(artist);
-    let title = document.getElementById('title');
-    let allAudios = document.querySelectorAll('audio');
-    let zodiac = document.getElementById('zodiac');
-    if (audio.paused) {
-        allAudios.forEach(audio => { 
-            audio.pause(); 
-        });
-        audio.play();
-        title.textContent = song+" - "+artist; 
-        zodiac.style.transform = "rotate("+degrees+"deg)";
-    } else {
-        audio.pause();
-        title.textContent = "Title - Artist";
-        zodiac.style.transform = "rotate(0deg)";
-    } 
-}*/
-
 const albums = [
     {
         zodiac : "capricorn",
@@ -255,3 +235,57 @@ function makeButtons() {
 }
 
 makeButtons();
+
+/**
+ * @description
+ * Given a month and day, determine the corresponding Zodiac sign.
+ * @param {number} month - month of the year (1-12)
+ * @param {number} day - day of the month (1-31)
+ * @returns {string} the corresponding Zodiac sign
+ */
+function getZodiac(month, day) {
+    if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
+      return 'Capricorn';
+    } else if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) {
+      return 'Sagittarius';
+    } else if ((month === 10 && day >= 24) || (month === 11 && day <= 21)) {
+      return 'Scorpio';
+    } else if ((month === 9 && day >= 23) || (month === 10 && day <= 23)) {
+      return 'Libra';
+    } else if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) {
+      return 'Virgo';
+    } else if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) {
+      return 'Leo';
+    } else if ((month === 6 && day >= 22) || (month === 7 && day <= 22)) {
+      return 'Cancer';
+    } else if ((month === 5 && day >= 21) || (month === 6 && day <= 21)) {
+      return 'Gemini';
+    } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
+      return 'Taurus';
+    } else if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
+      return 'Aries';
+    } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
+      return 'Pisces';
+    } else if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
+      return 'Aquarius';
+    } else return null;
+  }
+
+  function parseDate(event) {
+    event.preventDefault();
+    const date = document.getElementById("dateUser");
+    var input = date.value;
+    if (input != date.defaultValue) {
+        const month = parseInt(input.split('-')[1]);
+        const day = parseInt(input.split('-')[2]);
+        play(getZodiac(month,day).toLowerCase());
+        date.value = date.defaultValue;
+    }
+  }
+
+  function getInput(){
+    const submit = document.getElementById("submit");
+    submit.addEventListener('click',  parseDate);
+  }
+
+  getInput();
