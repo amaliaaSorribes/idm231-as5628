@@ -157,13 +157,7 @@ let prevArtist = "";
 let flag = -1;
 
 function play(zodiac) {
-    const artist = getInfo(zodiac)[0];
-    const song = getInfo(zodiac)[1];
-    const degrees = getInfo(zodiac)[2];
-    const audioSrc = getInfo(zodiac)[3];
-    const albumName = getInfo(zodiac)[4];
-    const releaseDate = getInfo(zodiac)[5];
-
+    const [artist, song, degrees, audioSrc, albumName, releaseDate] = getInfo(zodiac);
     const audio = document.getElementById('my_audio');
     const title = document.getElementById('title');
     let source = document.getElementById('my_source');
@@ -274,7 +268,7 @@ function getZodiac(month, day) {
   function parseDate(event) {
     event.preventDefault();
     const date = document.getElementById("dateUser");
-    var input = date.value;
+    const input = date.value;
     if (input != date.defaultValue) {
         const month = parseInt(input.split('-')[1]);
         const day = parseInt(input.split('-')[2]);
