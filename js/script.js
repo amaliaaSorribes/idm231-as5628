@@ -283,3 +283,36 @@ function getZodiac(month, day) {
   }
 
   getInput();
+
+  function on() {
+    const container = document.getElementById('overlayContainer');
+    const overlay = document.createElement('div');
+    overlay.className = "overlay";
+
+    const textDiv = document.createElement('div');
+    textDiv.className = "text";
+    textDiv.innerHTML = `
+      <h2>Instructions</h2>
+      <div class="x-container">
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+      </div>
+      <ul>
+        <li>Rule 1</li>
+        <li>Rule 2</li>
+        <li>Rule 3</li>
+        <li>Rule 4</li>
+      </ul>
+    `;
+    overlay.appendChild(textDiv);
+    container.appendChild(overlay);
+    const cross = document.getElementsByClassName('x-container')[0];
+    cross.addEventListener('click',  off);
+  }
+  
+  function off() {
+    const overlay = document.getElementsByClassName("overlay")[0];
+    if (overlay) {
+      overlay.remove();
+    }
+  }

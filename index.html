@@ -9,12 +9,14 @@
         <title>Zodiac Wrapped</title>
     </head>
     <body>
+        <div id="overlayContainer"></div>
         <h1>Zodiac Wrapped</h1>
         <div class="center"> 
             <form>
                 <input type="date" id="dateUser">
                 <input type="submit" id="submit">
             </form>
+            <img src="images/help.png" id="help" alt="help" onclick="on()"/>
         </div>
         <div class="center">
             <div id="container"></div>
@@ -25,7 +27,7 @@
                 <h2 id="title"> Title - Artist </h2>
                 <p id="description">Album Name, Release date</p>
             </div>
-            <img src="images/zodiac.png" id="zodiac"/>
+            <img src="images/zodiac.png" id="zodiac" alt="zodiac"/>
         </div>
     </body>
     <script src="js/script.js"></script>
