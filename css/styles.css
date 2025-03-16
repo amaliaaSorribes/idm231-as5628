@@ -138,7 +138,8 @@ form {
     background-color: white;
     border-radius: 10px;
 
-    width: 425px;
+    width: 80%;
+    max-width: 425px;
     height: auto;
     padding: 20px;
     border-radius: 20px;
