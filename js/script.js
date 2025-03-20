@@ -134,12 +134,18 @@ function getInfo(zodiac) {
 
 function createCD(artist, container){
     const myDivSpecific = document.getElementById('myDiv'+artist);
+    myDivSpecific.style.transition = 'margin-right 1s ease';
     myDivSpecific.style.marginRight = "65px";
 
     const cd = document.createElement('img');
     cd.src = "images/cd.png";
     cd.className = "cd";
     cd.id = "cd"+artist;
+    cd.style.marginLeft= '0px';
+    cd.style.transition = 'margin-left 1s ease';
+    setTimeout(() => {
+      cd.style.marginLeft= '75px';
+    }, 100);
 
     const itemSpecific = document.getElementById('item'+artist);
     itemSpecific.appendChild(cd);
@@ -148,7 +154,14 @@ function createCD(artist, container){
 }
 
 function deleteCD(cdPrev, prevArtist){
-    cdPrev.remove();
+  cdPrev.style.marginLeft= '75px';
+    cdPrev.style.transition = 'margin-left 0.5s ease';
+    setTimeout(() => {
+      cdPrev.style.marginLeft= '0px';
+    }, 100);
+    setTimeout(() => {
+      cdPrev.remove();
+    }, 250);
     const myDivSpecific = document.getElementById('myDiv'+prevArtist);
     myDivSpecific.style.marginRight = "0px";
 }
