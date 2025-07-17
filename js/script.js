@@ -59,15 +59,13 @@ function play(zodiac) {
     const description  = document.getElementById('description');
     source.src = audioSrc;
 
-    const loginBtn = document.getElementById('login-btn');
-
-    if (prevArtist!=artist && prevArtist!=null) {
+    if (prevArtist!=zodiac && prevArtist!=null) { //artist
         audio.load();
     }
 
-    if (prevArtist!=artist || flag==-1) {
-        if (prevArtist!=artist || (prevArtist==artist && flag==-1)) {
-            createCD(artist, container);
+    if (prevArtist!=zodiac || flag==-1) { //artist
+        if (prevArtist!=zodiac || (prevArtist==zodiac && flag==-1)) { //artist
+            createCD(zodiac, container); //artist
         } 
 
         if (flag==0 && cdPrev!=null) {
@@ -78,7 +76,7 @@ function play(zodiac) {
         title.textContent = song+" - "+artist; 
         description.innerHTML = "<u>Album Name:</u> "+albumName+"<br><br><u>Release date</u>: "+releaseDate;
         zodiacCircle.style.transform = "rotate("+degrees+"deg)";
-        prevArtist = artist;
+        prevArtist = zodiac;//artist;
         flag = 0;
     } else {
         audio.pause();
@@ -99,11 +97,11 @@ export function makeButtons() {
     for (let album of albums) {
         const div = document.createElement('div');
         div.className = "myDiv";
-        div.id = "myDiv"+album.artist;
+        div.id = "myDiv"+album.zodiac;//album.artist;
 
         const item = document.createElement('div');
         item.className = "item";
-        item.id = "item"+album.artist;
+        item.id = "item"+album.zodiac;//+album.artist;
 
         const image = document.createElement('img');
         image.src = album.imgSrc;
