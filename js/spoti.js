@@ -1,4 +1,5 @@
-import { albums } from './script.js';
+import { albums } from './albums.js';
+import { makeButtons } from './script.js'
 
   const loginBtn = document.getElementById('login-btn');
 
@@ -78,6 +79,8 @@ async function fetchLikedSongs(token) {
     zodiacalbum.imgSrc = albumCover;
     zodiacalbum.albumName = albumName;
     zodiacalbum.releaseDate = releaseDate;
+
+    makeButtons();
 
   });
 }
