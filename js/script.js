@@ -93,7 +93,7 @@ function play(zodiac) {
     } 
 }
 
-function makeButtons() {
+export function makeButtons() {
     const container = document.getElementById('container');
 
     for (let album of albums) {
