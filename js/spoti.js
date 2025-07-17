@@ -1,6 +1,9 @@
 import { albums } from './albums.js';
 import { makeButtons } from './script.js'
 
+const seenAlbums = new Set();
+const uniqueTracks = [];
+
   const loginBtn = document.getElementById('login-btn');
 
   loginBtn.addEventListener('click', async () => {
@@ -45,7 +48,7 @@ async function getAccessToken(code) {
   const data = await response.json();
   return data.access_token;
 }
-
+/*
 async function fetchLikedSongs(token) {
   const response = await fetch('https://api.spotify.com/v1/me/top/tracks?limit=12&time_range=short_term', {
     headers: {
@@ -59,6 +62,8 @@ async function fetchLikedSongs(token) {
 
   loginBtn.textContent = 'Logged in';
   loginBtn.disabled = true;
+
+  
 
   data.items.forEach((track, index) => {
   const artists = track.artists;
@@ -86,7 +91,58 @@ async function fetchLikedSongs(token) {
   const container = document.getElementById('container');
   container.innerHTML = '';
   makeButtons();
+}*/
+
+async function fetchUniqueTopTracks(token, desiredCount = 12) {
+  const seenAlbums = new Set();
+  const uniqueTracks = [];
+
+  let offset = 0;
+  const limit = 20;
+
+  while (uniqueTracks.length < desiredCount && offset < 100) {
+    const response = await fetch(`https://api.spotify.com/v1/me/top/tracks?limit=${limit}&offset=${offset}&time_range=short_term`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!response.ok) break;
+
+    const data = await response.json();
+    if (data.items.length === 0) break;
+
+    data.items.forEach(track => {
+      const albumCover = track.album.images[0]?.url;
+      if (!seenAlbums.has(albumCover)) {
+        seenAlbums.add(albumCover);
+        uniqueTracks.push(track);
+      }
+    });
+
+    offset += limit;
+  }
+
+  return uniqueTracks.slice(0, desiredCount);
 }
+
+const tracks = await fetchUniqueTopTracks(token, 12);
+
+tracks.forEach((track, index) => {
+  const artists = track.artists.map(a => a.name).join(', ');
+  const album = track.album;
+  const zodiacalbum = albums[index];
+
+  zodiacalbum.artist = artists;
+  zodiacalbum.song = track.name;
+  zodiacalbum.audioSrc = track.preview_url;
+  zodiacalbum.imgSrc = album.images[0]?.url;
+  zodiacalbum.albumName = album.name;
+  zodiacalbum.releaseDate = album.release_date;
+
+  console.log(`${track.name} --------- ${track.preview_url}`);
+});
+
 
 async function handleRedirect() {
   const params = new URLSearchParams(window.location.search);
