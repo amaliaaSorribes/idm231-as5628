@@ -71,7 +71,7 @@ async function fetchLikedSongs(token) {
 
   //const artistData = await artistResponse.json();
 
-  console.log(sharedGenres);
+  //console.log(sharedGenres);
 
   console.log(track.name +" by "+ artists.map(a => a.name).join(', '));
 
