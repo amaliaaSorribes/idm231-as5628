@@ -1,6 +1,6 @@
 //// @ts-check
 
-const albums = [
+export const albums = [
     {
         zodiac : "capricorn",
         artist: "Pole.",

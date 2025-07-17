@@ -1,3 +1,4 @@
+import { albums } from './script.js';
 
   const loginBtn = document.getElementById('login-btn');
 
@@ -45,7 +46,7 @@ async function getAccessToken(code) {
 }
 
 async function fetchLikedSongs(token) {
-  const response = await fetch('https://api.spotify.com/v1/me/tracks?limit=10', {
+  const response = await fetch('https://api.spotify.com/v1/me/tracks?limit=12', {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -58,25 +59,26 @@ async function fetchLikedSongs(token) {
   loginBtn.textContent = 'Logged in';
   loginBtn.disabled = true;
 
-  for (const item of data.items) {
-  const track = item.track;
-  const artists = track.artists;
-  const artistIds = artists.map(artist => artist.id);
+  data.items.forEach((item, index) => {
+    const track = item.track;
+    const artists = track.artists;
+    const artistNames = artists.map(artist => artist.name).join(', ');
 
-  //const artistResponse = await fetch(`https://api.spotify.com/v1/artists?ids=${artistIds.join(',')}`, {
-  //  headers: {
-  //    Authorization: `Bearer ${token}`
-  //  }
-  //});
+    const album = track.album;
+    const albumName = album.name;
+    const albumCover = album.images[0]?.url;
+    const releaseDate = album.release_date;
+    const previewUrl = track.preview_url;
 
-  //const artistData = await artistResponse.json();
+    zodiacalbum.artist = artistNames;
+    zodiacalbum.song = track;
+    zodiacalbum.audioSrc = previewUrl;
+    zodiacalbum.imgSrc = albumCover;
+    zodiacalbum.albumName = albumName;
+    zodiacalbum.releaseDate = releaseDate;
 
-  //console.log(sharedGenres);
-
-  console.log(track.name +" by "+ artists.map(a => a.name).join(', '));
-
-  //console.log(artistData); //remove later
-}}
+  });
+}
 
 async function handleRedirect() {
   const params = new URLSearchParams(window.location.search);
