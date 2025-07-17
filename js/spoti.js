@@ -70,6 +70,8 @@ async function fetchLikedSongs(token) {
     const releaseDate = album.release_date;
     const previewUrl = track.preview_url;
 
+    const zodiacalbum = albums[index];
+
     zodiacalbum.artist = artistNames;
     zodiacalbum.song = track;
     zodiacalbum.audioSrc = previewUrl;
