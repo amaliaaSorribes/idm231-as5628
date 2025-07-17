@@ -60,28 +60,28 @@ async function fetchLikedSongs(token) {
   loginBtn.textContent = 'Logged in';
   loginBtn.disabled = true;
 
-  data.items.forEach((item, index) => {
-    const track = item.track;
-    const artists = track.artists;
-    const artistNames = artists.map(artist => artist.name).join(', ');
+  data.items.forEach((track, index) => {
+  const artists = track.artists;
+  const artistNames = artists.map(artist => artist.name).join(', ');
 
-    const album = track.album;
-    const albumName = album.name;
-    const albumCover = album.images[0]?.url;
-    const releaseDate = album.release_date;
-    const previewUrl = track.preview_url;
+  const album = track.album;
+  const albumName = album.name;
+  const albumCover = album.images[0]?.url;
+  const releaseDate = album.release_date;
+  const previewUrl = track.preview_url;
 
-    const zodiacalbum = albums[index];
+  const zodiacalbum = albums[index];
 
-    zodiacalbum.artist = artistNames; //works
-    zodiacalbum.song = track.name;
-    zodiacalbum.audioSrc = previewUrl;
-    console.log(track.name+" --------- "+previewUrl);
-    zodiacalbum.imgSrc = albumCover; //works
-    zodiacalbum.albumName = albumName; //works
-    zodiacalbum.releaseDate = releaseDate; //works
+  zodiacalbum.artist = artistNames;
+  zodiacalbum.song = track.name;
+  zodiacalbum.audioSrc = previewUrl;
+  zodiacalbum.imgSrc = albumCover;
+  zodiacalbum.albumName = albumName;
+  zodiacalbum.releaseDate = releaseDate;
 
-  });
+  console.log(track.name + " --------- " + previewUrl);
+});
+
 
   const container = document.getElementById('container');
   container.innerHTML = '';
