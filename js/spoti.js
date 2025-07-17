@@ -23,7 +23,7 @@ import { makeButtons } from './script.js'
 
 const clientId = 'a66300df53bc4500939e08d0680425e1';
 const redirectUri = 'https://zodiacwrapped.netlify.app/'; 
-const scopes = 'user-library-read';
+const scopes = 'user-library-read user-top-read';
 
 async function getAccessToken(code) {
   const codeVerifier = localStorage.getItem('code_verifier');
