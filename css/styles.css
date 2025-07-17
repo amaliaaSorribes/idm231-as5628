@@ -182,3 +182,12 @@ form {
 .line2 {
     transform: translateY(-50%) rotate(-45deg);
 }
+
+#login-btn {
+    background-image: linear-gradient(rgba(138, 197, 168, 0.493), #008927);
+    /* background-color: #339c49;*/
+    color: white;
+    border: 0;
+    border-radius: 15px ;
+    padding: 8px 15px;
+}

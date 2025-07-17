@@ -180,6 +180,8 @@ function play(zodiac) {
     const description  = document.getElementById('description');
     source.src = audioSrc;
 
+    const loginBtn = document.getElementById('login-btn');
+
     if (prevArtist!=artist && prevArtist!=null) {
         audio.load();
     }
