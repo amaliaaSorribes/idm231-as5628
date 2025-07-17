@@ -125,7 +125,7 @@ async function fetchUniqueTopTracks(token, desiredCount = 12) {
 
   return uniqueTracks.slice(0, desiredCount);
 }
-
+/*
 const tracks = await fetchUniqueTopTracks(token, 12);
 
 tracks.forEach((track, index) => {
@@ -142,7 +142,7 @@ tracks.forEach((track, index) => {
 
   console.log(`${track.name} --------- ${track.preview_url}`);
 });
-
+*/
 
 async function handleRedirect() {
   const params = new URLSearchParams(window.location.search);
@@ -151,7 +151,23 @@ async function handleRedirect() {
   if (code) {
     window.history.replaceState({}, document.title, '/'); // Clean URL
     const token = await getAccessToken(code);
-    await fetchLikedSongs(token);
+    const tracks = await fetchUniqueTopTracks(token, 12);
+
+    tracks.forEach((track, index) => {
+    const artists = track.artists.map(a => a.name).join(', ');
+    const album = track.album;
+    const zodiacalbum = albums[index];
+
+    zodiacalbum.artist = artists;
+    zodiacalbum.song = track.name;
+    zodiacalbum.audioSrc = track.preview_url;
+    zodiacalbum.imgSrc = album.images[0]?.url;
+    zodiacalbum.albumName = album.name;
+    zodiacalbum.releaseDate = album.release_date;
+
+    console.log(`${track.name} --------- ${track.preview_url}`);
+    });
+
   }
 }
 
