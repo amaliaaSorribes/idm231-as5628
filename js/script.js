@@ -122,6 +122,11 @@ export function makeButtons() {
     }
 }
 
+const loginBtn = document.getElementById('login-btn');
+
+if(loginBtn.textContent != "Logged in") {
+  makeButtons();
+}
 //makeButtons();
 
 /**
@@ -178,7 +183,7 @@ function getZodiac(month, day) {
 
   getInput();
 
-  function on() {
+  export function on() {
     const container = document.getElementById('overlayContainer');
     const overlay = document.createElement('div');
     overlay.className = "overlay";

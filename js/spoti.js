@@ -47,7 +47,7 @@ async function getAccessToken(code) {
 }
 
 async function fetchLikedSongs(token) {
-  const response = await fetch('https://api.spotify.com/v1/me/tracks?limit=12', {
+  const response = await fetch('https://api.spotify.com/v1/me/player/recently-played?limit=12', {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -73,12 +73,13 @@ async function fetchLikedSongs(token) {
 
     const zodiacalbum = albums[index];
 
-    zodiacalbum.artist = artistNames;
-    zodiacalbum.song = track;
+    zodiacalbum.artist = artistNames; //works
+    zodiacalbum.song = track.name;
     zodiacalbum.audioSrc = previewUrl;
-    zodiacalbum.imgSrc = albumCover;
-    zodiacalbum.albumName = albumName;
-    zodiacalbum.releaseDate = releaseDate;
+    console.log(track.name+" --------- "+previewUrl);
+    zodiacalbum.imgSrc = albumCover; //works
+    zodiacalbum.albumName = albumName; //works
+    zodiacalbum.releaseDate = releaseDate; //works
 
   });
 
