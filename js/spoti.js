@@ -81,9 +81,9 @@ async function fetchLikedSongs(token) {
     zodiacalbum.releaseDate = releaseDate;
 
   });
-}
 
-makeButtons();
+  makeButtons();
+}
 
 async function handleRedirect() {
   const params = new URLSearchParams(window.location.search);
