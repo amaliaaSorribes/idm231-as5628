@@ -47,7 +47,7 @@ async function getAccessToken(code) {
 }
 
 async function fetchLikedSongs(token) {
-  const response = await fetch('https://api.spotify.com/v1/me/player/recently-played?limit=12', {
+  const response = await fetch('https://api.spotify.com/v1/me/top/tracks?limit=12&time_range=short_term', {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -83,6 +83,8 @@ async function fetchLikedSongs(token) {
 
   });
 
+  const container = document.getElementById('container');
+  container.innerHTML = '';
   makeButtons();
 }
 
