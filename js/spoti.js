@@ -47,7 +47,7 @@ async function getAccessToken(code) {
 }
 
 async function fetchLikedSongs(token) {
-  const response = await fetch('https://api.spotify.com/v1/me/top/tracks?limit=12&time_range=short_term', {
+  const response = await fetch('https://api.spotify.com/v1/me/top/tracks?limit=12&time_range=medium_term', {
     headers: {
       Authorization: `Bearer ${token}`
     }
